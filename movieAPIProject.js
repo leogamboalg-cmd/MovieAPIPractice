@@ -1,4 +1,5 @@
-const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
+const API_KEY = "f293dea9";
+console.log("API KEY:", API_KEY);
 
 document.querySelector("form").addEventListener("submit", e => {
     e.preventDefault();
