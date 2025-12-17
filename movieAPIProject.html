@@ -134,7 +134,7 @@
         <form>
             <label class="white" for="movieName"></label>
             <input placeholder="Enter movie title" type="text" id="movieName" name="movieName">
-            <button type="submit" id="submitButton">Search</button>
+            <button type="submit" id="submitButton" onclick="getData()">Search</button>
         </form>
     </main>
 
@@ -151,9 +151,9 @@
                     <div class="gridCard">
                         <div class="heart">♡</div>
                             <div class="poster-placeholder">
-                                No favorite<br>movies yet
+                                <img src="" alt="" id="testImg">
                             </div>
-                            <p class="favorite-title">Movie Title</p>
+                            <p class="favorite-title" id="test">Movie Title</p>
                     </div>
             </div>
         </div>
