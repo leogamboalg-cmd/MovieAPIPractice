@@ -11,6 +11,10 @@ async function getData(e) {
     e.preventDefault();  
     const movieName = document.getElementById("movieName").value;
 
+    if(movieName==="") {
+        alert("Please search for a movie first!");
+        return;
+    }
     const url = `https://www.omdbapi.com/?apikey=${API_KEY}&t=${movieName}`;
     try {
         const res = await fetch(url);
@@ -60,6 +64,11 @@ function addToFavorites(heart) {
     return;
     }
 
+    if(document.getElementById("movieName").value==="") {
+        alert("Please search for a movie first!");
+        return;
+    }
+
     const img = cards[currentFavoriteMovies].querySelector("img");  
     if(movie.Poster === "N/A") {
         img.src = "./images/noImageAvailable.png";
@@ -101,6 +110,10 @@ function toggleHeart(heart) {
 }
 // ♥♡
 function untoggleHeart(heart) {
+    if(document.getElementById("movieName").value===null) {
+        alert("Please search for a movie first!");
+        return;
+    }
     heart.textContent = "♡";
     heart.style.color="#FFD25C";
 }
