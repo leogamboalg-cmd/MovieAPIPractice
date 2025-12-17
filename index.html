@@ -120,10 +120,18 @@
     margin-bottom: 12px;
 }
 
-#testImg {
+.poster-placeholder img {
     width: 100%;
     height: 100%;
+    display:none;
     object-fit: cover; /* This fills the space perfectly without stretching */
+}
+
+
+
+#currentMovie {
+    display:flex;
+    justify-content: center;
 }
 
     </style>
@@ -134,12 +142,27 @@
         <h1 id="title">Movie Scope</h1>
     </header>
     <main>
-        <form>
+        <form id="submitForm">
             <label class="white" for="movieName"></label>
             <input placeholder="Enter movie title" type="text" id="movieName" name="movieName">
-            <button type="submit" id="submitButton" onclick="getData()">Search</button>
+            <button type="submit" id="submitButton">Search</button>
         </form>
     </main>
+
+    <section>
+        <br>
+        <br>
+         <div id="currentMovie">
+                    <div class="gridCard">
+                        <div class="heart" onclick="addToFavorites()">♡</div>
+                            <div class="poster-placeholder">
+                                <img src="" alt="Movie Poster" id="currentMovieImg">
+                            </div>
+                            <p class="favorite-title" id="currentMovieName">Movie Title</p>
+                            <!-- <a class="white" href="https://youtu.be/dQw4w9WgXcQ?si=YVrhIzZiD9U8sni-">Click to watch movie!</a> -->
+                    </div>
+            </div>
+    </section>
 
     <section>
         <div id="favoriteSection">
@@ -152,20 +175,35 @@
 
             <div id="favoriteGrid">
                     <div class="gridCard">
-                        <div class="heart">♡</div>
+                        <div class="heart" onclick="removeFromFavorites(this)">♡</div>
                             <div class="poster-placeholder">
-                                <img src="" alt="" id="testImg">
+                                <img src="" alt="Movie Poster" id="favoriteImgOne">
+                            </div>
+                            <p class="favorite-title" id="favoriteMovieOne">Movie Title</p>
+                    </div>
+            
+                    <div class="gridCard">
+                        <div class="heart" onclick="removeFromFavorites(this)">♡</div>
+                            <div class="poster-placeholder">
+                                <img src="" alt="Movie Poster" id="favoriteImgTwo">
+                            </div>
+                            <p class="favorite-title" id="favoriteMovieTwo">Movie Title</p>
+                    </div>
+                    <div class="gridCard">
+                        <div class="heart" onclick="removeFromFavorites(this)">♡</div>
+                            <div class="poster-placeholder">
+                                <img src="" alt="Movie Poster" id="favoriteMovieThree">
                             </div>
                             <p class="favorite-title" id="test">Movie Title</p>
-                            <a class="white" href="https://youtu.be/dQw4w9WgXcQ?si=YVrhIzZiD9U8sni-">Click to watch movie!</a>
                     </div>
             </div>
         </div>
     </section>
 
-    <!-- <footer>
+    <footer>
+        <br>
         <small class="white">&copy; Movie Scope 2025</small>
-    </footer> -->
+    </footer>
     <script src="movieAPIProject.js"></script>
 </body>
 </html>
