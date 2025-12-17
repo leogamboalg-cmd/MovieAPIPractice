@@ -53,7 +53,7 @@ async function getData(e) {
   }
 }
 
-function addToFavorites() {
+function addToFavorites(heart) {
 
     if(currentFavoriteMovies===3) {
     alert("Out of space!");
@@ -71,6 +71,8 @@ function addToFavorites() {
         img.classList.add("placeholder");
     };
     img.style.display = "initial";
+    toggleHeart(heart);
+    toggleHeart(cards[currentFavoriteMovies].querySelector(".heart"));
     cards[currentFavoriteMovies++].querySelector(".favorite-title").textContent = movie.Title;
 }
 
@@ -78,10 +80,27 @@ function removeFromFavorites(heart) {
     const card = heart.closest(".gridCard");
     const img = card.querySelector("img");
     const title = card.querySelector(".favorite-title");
-
+    untoggleHeart(heart);
     img.src = "";
     img.style.display = "none";
+
+    const currentTitle = document.getElementById("currentMovieName").textContent;
+    const currentHeart = document.querySelector("#currentMovie .heart");
+    if (title.textContent === currentTitle) {
+        untoggleHeart(currentHeart);
+    }
+
     title.textContent = "Movie Title";
     img.classList.remove("placeholder");
     currentFavoriteMovies = Math.max(0, currentFavoriteMovies - 1);
+}
+// ♥♡
+function toggleHeart(heart) {
+    heart.textContent = "♥";
+    heart.style.color="red";
+}
+// ♥♡
+function untoggleHeart(heart) {
+    heart.textContent = "♡";
+    heart.style.color="#FFD25C";
 }
