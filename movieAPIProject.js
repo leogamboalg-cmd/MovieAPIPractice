@@ -37,7 +37,7 @@ async function getData() {
     }
     catch (err) {
         console.error("Fetch failed:", err.message);
-
+        alert("Movie not found!");
         return []; // prevents crashes
   }
 }
