@@ -102,26 +102,29 @@
     color: #EF584A;
     }
 
-
-    .poster-placeholder {
-        height: 150px;
-        width: 100%;
-        border-radius: 12px;
-        background: rgba(255,255,255,0.15);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        font-size: 14px;
-        margin-bottom: 12px;
-    }
-
     .favorite-title {
     text-align: center;
     margin-top: 8px;
     font-size: 15px;
     }
 
+    .poster-placeholder {
+    height: 320px; /* Increased from 150px to fit a standard portrait poster */
+    width: 100%;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden; /* Ensures the image doesn't leak out of the corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+#testImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This fills the space perfectly without stretching */
+}
 
     </style>
 </head>
