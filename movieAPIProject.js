@@ -1,4 +1,4 @@
-let API_KEY = "f293dea9";
+const API_KEY = import.meta.env.VITE_OMDB_API_KEY;
 
 document.querySelector("form").addEventListener("submit", e => {
     e.preventDefault();
@@ -36,7 +36,7 @@ async function getData() {
     }
     catch (err) {
         console.error("Fetch failed:", err.message);
-        
+
         return []; // prevents crashes
   }
 }
