@@ -36,11 +36,15 @@
         <!-- ♥♡-->
          <div id="currentMovie">
                     <div class="gridCard"> 
-                        <div class="heart" onclick="addToFavorites(this)">♡</div>
+                        <div class="heart" id="curHeart" onclick="addToFavorites(this)">♡</div>
                             <div class="poster-placeholder">
                                 <img src="" alt="Movie Poster" id="currentMovieImg">
                             </div>
-                            <p class="favorite-title" id="currentMovieName">Movie Title</p>
+                            <p class="favorite-title" id="currentMovieName"></p>
+                            <details id="curMovieDetails">
+                                <summary><strong>Movie Summary</strong></summary>
+                                <p></p>
+                            </details>
                             <!-- <a class="white" href="https://youtu.be/dQw4w9WgXcQ?si=YVrhIzZiD9U8sni-">Click to watch movie!</a> -->
                     </div>
             </div>
@@ -61,7 +65,11 @@
                             <div class="poster-placeholder">
                                 <img src="" alt="Movie Poster" id="favoriteImgOne">
                             </div>
-                            <p class="favorite-title" id="favoriteMovieOne">Movie Title</p>
+                            <p class="favorite-title" id="favoriteMovieOne"></p>
+                            <details class="hideMovieDetails">
+                                <summary><strong>Movie Summary</strong></summary>
+                                <p></p>
+                            </details>
                     </div>
             
                     <div class="gridCard">
@@ -69,14 +77,22 @@
                             <div class="poster-placeholder">
                                 <img src="" alt="Movie Poster" id="favoriteImgTwo">
                             </div>
-                            <p class="favorite-title" id="favoriteMovieTwo">Movie Title</p>
+                            <p class="favorite-title" id="favoriteMovieTwo"></p>
+                            <details class="hideMovieDetails">
+                                <summary><strong>Movie Summary</strong></summary>
+                                <p></p>
+                            </details>
                     </div>
                     <div class="gridCard">
                         <div class="heart" onclick="removeFromFavorites(this)">♡</div>
                             <div class="poster-placeholder">
                                 <img src="" alt="Movie Poster" id="favoriteMovieThree">
                             </div>
-                            <p class="favorite-title" id="test">Movie Title</p>
+                            <p class="favorite-title" id="test"></p>
+                            <details class="hideMovieDetails">
+                                <summary><strong>Movie Summary</strong></summary>
+                                <p></p>
+                            </details>
                     </div>
             </div>
         </div>

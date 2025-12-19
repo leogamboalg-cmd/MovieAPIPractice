@@ -5,7 +5,7 @@ const favoriteGrid = document.getElementById("favoriteGrid");
 const cards = favoriteGrid.querySelectorAll(".gridCard");
 
 document.querySelector("form").addEventListener("submit", getData);
-
+let curMovie = document.getElementById("curMovieDetails");
 
 async function getData(e) {
     e.preventDefault();  
@@ -34,7 +34,6 @@ async function getData(e) {
     let firstMovie = document.getElementById("currentMovieName");
     let image = document.getElementById("currentMovieImg");
     
-    console.log(data.Search);
     movie = data;
 
     if(movie.Poster === "N/A") {
@@ -47,8 +46,11 @@ async function getData(e) {
         image.classList.add("placeholder");
     };
 
-    image.style.display = "initial";
-    firstMovie.textContent = movie.Title;
+    image.style.display = "initial"; //displaying image
+    firstMovie.textContent = movie.Title; //changing to movie title
+    curMovie.querySelector("p").textContent = movie.Plot; //adding movie plot
+    curMovie.style.display = "initial"; //displaying movie plot
+    untoggleHeart(document.getElementById("curHeart"));
     }
     catch (err) {
         console.error("Fetch failed:", err.message);
@@ -80,6 +82,14 @@ function addToFavorites(heart) {
         img.classList.add("placeholder");
     };
     img.style.display = "initial";
+
+    const card = cards[currentFavoriteMovies];
+
+    // const card = heart.closest(".gridCard");
+    const curFavDetails = card.querySelector("details");
+    const curFavDetailsContent = card.querySelector("details p");
+    curFavDetails.classList.remove("hideMovieDetails");
+    curFavDetailsContent.textContent = movie.Plot;
     toggleHeart(heart);
     toggleHeart(cards[currentFavoriteMovies].querySelector(".heart"));
     cards[currentFavoriteMovies++].querySelector(".favorite-title").textContent = movie.Title;
@@ -101,6 +111,8 @@ function removeFromFavorites(heart) {
 
     title.textContent = "Movie Title";
     img.classList.remove("placeholder");
+    const curFavDetails = card.querySelector("details");
+    curFavDetails.classList.add("hideMovieDetails");
     currentFavoriteMovies = Math.max(0, currentFavoriteMovies - 1);
 }
 // ♥♡
