@@ -12,7 +12,7 @@ async function getData(e) {
     const movieName = document.getElementById("movieName").value;
 
     if(movieName==="") {
-        alert("Please search for a movie first!");
+        showToast("Please search for a movie first");
         return;
     }
     const url = `https://www.omdbapi.com/?apikey=${API_KEY}&t=${movieName}`;
@@ -54,7 +54,7 @@ async function getData(e) {
     }
     catch (err) {
         console.error("Fetch failed:", err.message);
-        alert("Movie not found!");
+        showToast("Movie not found!");
         return []; // prevents crashes
   }
 }
@@ -62,12 +62,17 @@ async function getData(e) {
 function addToFavorites(heart) {
 
     if(currentFavoriteMovies===3) {
-    alert("Out of space!");
+    showToast("Out of space");
     return;
     }
 
+    if(isDuplicate(movie.Title)) {
+        showToast("Cannot add duplicates to favorites!");
+        return;
+    }
+
     if(document.getElementById("movieName").value==="") {
-        alert("Please search for a movie first!");
+        showToast("Please search for a movie first");
         return;
     }
 
@@ -93,12 +98,20 @@ function addToFavorites(heart) {
     toggleHeart(heart);
     toggleHeart(cards[currentFavoriteMovies].querySelector(".heart"));
     cards[currentFavoriteMovies++].querySelector(".favorite-title").textContent = movie.Title;
+    showToast(`${movie.Title} added to favorites!`, "success");
 }
 
 function removeFromFavorites(heart) {
+
     const card = heart.closest(".gridCard");
+    if(card.querySelector("p").textContent === "") {
+        showToast("No movie favorited here");
+        return;
+    }
+
     const img = card.querySelector("img");
     const title = card.querySelector(".favorite-title");
+    showToast(`${title.textContent} removed from favorites!`, "success");
     untoggleHeart(heart);
     img.src = "";
     img.style.display = "none";
@@ -108,8 +121,9 @@ function removeFromFavorites(heart) {
     if (title.textContent === currentTitle) {
         untoggleHeart(currentHeart);
     }
+    title.textContent = "";
 
-    title.textContent = "Movie Title";
+    // title.textContent = "Movie Title";
     img.classList.remove("placeholder");
     const curFavDetails = card.querySelector("details");
     curFavDetails.classList.add("hideMovieDetails");
@@ -123,9 +137,30 @@ function toggleHeart(heart) {
 // ♥♡
 function untoggleHeart(heart) {
     if(document.getElementById("movieName").value===null) {
-        alert("Please search for a movie first!");
+        showToast("Please search for a movie first!");
         return;
     }
     heart.textContent = "♡";
     heart.style.color="#FFD25C";
+}
+
+function isDuplicate(movieTitle) {
+    for(let card of cards) {
+        const title = card.querySelector(".favorite-title");
+
+        if(title.textContent === movieTitle) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function showToast(message) {
+    const toast = document.getElementById("toast");
+    toast.textContent = message;
+    toast.classList.remove("hidden");
+
+    setTimeout(() => {
+        toast.classList.add("hidden");
+    }, 2000);
 }
