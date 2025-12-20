@@ -136,7 +136,7 @@ function toggleHeart(heart) {
 }
 // ♥♡
 function untoggleHeart(heart) {
-    if(document.getElementById("movieName").value===null) {
+    if(document.getElementById("movieName").value==="") {
         showToast("Please search for a movie first!");
         return;
     }
