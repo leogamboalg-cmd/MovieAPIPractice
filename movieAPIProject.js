@@ -66,13 +66,13 @@ function addToFavorites(heart) {
     return;
     }
 
-    if(isDuplicate(movie.Title)) {
-        showToast("Cannot add duplicates to favorites!");
+    if(curMovie.querySelector("p").textContent==="") {
+        showToast("Please search for a movie first");
         return;
     }
 
-    if(document.getElementById("movieName").value==="") {
-        showToast("Please search for a movie first");
+    if(isDuplicate(movie.Title)) {
+        showToast("Cannot add duplicates to favorites!");
         return;
     }
 
