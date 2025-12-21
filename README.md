@@ -43,7 +43,7 @@ This project was built to practice **frontend JavaScript**, **API integration**,
 - **OMDb API**  
   https://www.omdbapi.com/
 
-> Note: An API key is required to make requests.
+> Note: An API key is required to make requests (have to request one from website and replace mine in the js file).
 
 ---
 
