@@ -99,6 +99,20 @@ function addToFavorites(heart) {
     toggleHeart(cards[currentFavoriteMovies].querySelector(".heart"));
     cards[currentFavoriteMovies++].querySelector(".favorite-title").textContent = movie.Title;
     showToast(`${movie.Title} added to favorites!`, "success");
+    fetch("http://localhost:3000/addToFavorites", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            title: movie.Title,
+        })
+        })
+        .then(res => res.json())
+        .then(data => {
+        console.log(data);
+        });
+    console.log("addToFavorites called, sent to backend!");
 }
 
 function removeFromFavorites(heart) {
